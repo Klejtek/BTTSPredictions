@@ -3,12 +3,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
-const matchRoutes = require('./routes/matches');  // Poprawiony import bez 'path.resolve'
-const topBttsRoutes = require('./routes/topBtts');
-const { scheduleFetchMatches, fetchAndStoreMatchesWithLogging, fetchLast5Matches, fetchH2HMatches } = require('./services/fetchMatches');
 const axios = require('axios');
 require('dotenv').config();
+
+const { scheduleFetchMatches, fetchAndStoreMatchesWithLogging, fetchLast5Matches, fetchH2HMatches } = require('./services/fetchMatches');
 
 const app = express();
 
@@ -44,9 +42,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     process.exit(1);
   });
 
-// Rejestracja tras
-app.use('/api/matches', matchRoutes);
-app.use('/api/top-btts', topBttsRoutes);
 
 // Nowy endpoint do pobierania kursów dla meczu
 const API_KEY = process.env.API_KEY;

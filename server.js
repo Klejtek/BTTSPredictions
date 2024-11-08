@@ -6,7 +6,6 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 
-const { scheduleFetchMatches, fetchAndStoreMatchesWithLogging, fetchLast5Matches, fetchH2HMatches } = require('./services/fetchMatches');
 
 const app = express();
 
